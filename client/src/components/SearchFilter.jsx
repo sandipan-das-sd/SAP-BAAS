@@ -40,43 +40,43 @@ const SearchFilter = ({ onSearch, onFilterApply, initialFilters }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-      <div className="flex space-x-4">
-        {/* Search Input */}
+    <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-xl p-6 mb-6 border border-blue-100 transition-all duration-300 hover:shadow-xl">
+      <div className="flex space-x-4 relative">
+        {/* Search Input with Enhanced Styling */}
         <div className="relative flex-grow">
           <input 
             type="text" 
             placeholder="Search orders..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full pl-10 pr-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 transition"
+            className="w-full pl-12 pr-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ease-in-out text-gray-700 placeholder-gray-400 shadow-sm"
           />
-          <Search className="absolute left-3 top-3 text-gray-400" size={20} />
+          <Search className="absolute left-4 top-3.5 text-blue-500 animate-pulse" size={22} />
         </div>
 
-        {/* Advanced Filters Toggle */}
+        {/* Advanced Filters Toggle with Gradient */}
         <button 
           onClick={() => setIsAdvancedFilterOpen(!isAdvancedFilterOpen)}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition flex items-center"
+          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center shadow-md hover:shadow-lg"
         >
-          <Filter className="mr-2" size={18} />
+          <Filter className="mr-2 animate-bounce" size={20} />
           Filters
         </button>
       </div>
 
-      {/* Advanced Filters Dropdown */}
+      {/* Advanced Filters Dropdown with Enhanced Animation */}
       {isAdvancedFilterOpen && (
-        <div className="mt-4 grid grid-cols-3 gap-4 bg-gray-50 p-4 rounded-md animate-fade-in">
-          {/* Release Status Filter */}
+        <div className="mt-6 grid grid-cols-3 gap-6 bg-white rounded-xl shadow-lg p-6 border border-blue-100 animate-slide-in">
+          {/* Filters remain the same, but with enhanced styling */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-wider">
               Release Status
             </label>
             <select
               name="releaseStatus"
               value={filters.releaseStatus}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700"
             >
               <option value="">All Statuses</option>
               <option value="Released">Released</option>
@@ -84,16 +84,16 @@ const SearchFilter = ({ onSearch, onFilterApply, initialFilters }) => {
             </select>
           </div>
 
-          {/* Execution Status Filter */}
+          {/* Similar styling for other select dropdowns */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-wider">
               Execution Status
             </label>
             <select
               name="executionStatus"
               value={filters.executionStatus}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700"
             >
               <option value="">All Statuses</option>
               <option value="Active">Active</option>
@@ -101,37 +101,35 @@ const SearchFilter = ({ onSearch, onFilterApply, initialFilters }) => {
             </select>
           </div>
 
-          {/* Work Center Filter */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-wider">
               Work Center
             </label>
             <select
               name="workCenter"
               value={filters.workCenter}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-gray-700"
             >
               <option value="">All Work Centers</option>
               <option value="ELECTRIC,MECH ANIC,ASSEMBLY, PACKING">
                 Electric Mech Assembly
               </option>
-              {/* Add more work center options */}
             </select>
           </div>
 
-          {/* Filter Action Buttons */}
-          <div className="col-span-3 flex justify-end space-x-3 mt-4">
+          {/* Filter Action Buttons with Gradient and Animation */}
+          <div className="col-span-3 flex justify-end space-x-4 mt-6">
             <button
               onClick={resetFilters}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition"
+              className="px-5 py-2.5 bg-gradient-to-r from-gray-200 to-gray-300 text-gray-800 rounded-lg hover:from-gray-300 hover:to-gray-400 transition-all duration-300 flex items-center shadow-md"
             >
               <X className="inline mr-2" size={18} />
               Clear Filters
             </button>
             <button
               onClick={applyFilters}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+              className="px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Apply Filters
             </button>
