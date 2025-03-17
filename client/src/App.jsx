@@ -15,76 +15,7 @@ import SearchFilter from './components/SearchFilter';
 import { mockOrders } from './data/mockOrders';
 import { filterOrders } from './utils/filterOrders';
 import Sidebar from './components/Slidebar';
-// // Sidebar Component
-// const Sidebar = ({ activeMenu, setActiveMenu }) => {
-//   const menuItems = [
-//     { 
-//       icon: LayoutDashboard, 
-//       label: 'Dashboard', 
-//       active: activeMenu === 'dashboard' 
-//     },
-//     { 
-//       icon: Package, 
-//       label: 'Orders', 
-//       active: activeMenu === 'orders' 
-//     },
-//     { 
-//       icon: Users, 
-//       label: 'Customers', 
-//       active: activeMenu === 'customers' 
-//     },
-//     { 
-//       icon: Settings, 
-//       label: 'Settings', 
-//       active: activeMenu === 'settings' 
-//     }
-//   ];
 
-//   return (
-//     <div className="fixed left-0 top-0 h-full w-20 hover:w-64 group bg-gradient-to-b from-blue-900 to-blue-800 text-white transition-all duration-300 ease-in-out z-50 shadow-2xl">
-//       <div className="flex flex-col h-full">
-//         {/* Logo Area */}
-//         <div className="flex items-center justify-center h-20 border-b border-blue-700">
-//           <div className="text-2xl font-bold flex items-center">
-//             <span className="group-hover:hidden">OMS</span>
-//             <span className="hidden group-hover:inline">Order Management</span>
-//           </div>
-//         </div>
-
-//         {/* Menu Items */}
-//         <nav className="flex-grow pt-8">
-//           {menuItems.map((item, index) => (
-//             <div 
-//               key={index}
-//               className={`
-//                 flex items-center px-6 py-4 cursor-pointer 
-//                 transition-all duration-300 
-//                 ${item.active ? 'bg-blue-700 text-white' : 'hover:bg-blue-700'}
-//               `}
-//               onClick={() => setActiveMenu(item.label.toLowerCase())}
-//             >
-//               <item.icon className="w-6 h-6 mr-4" />
-//               <span className="hidden group-hover:inline">{item.label}</span>
-//             </div>
-//           ))}
-//         </nav>
-
-//         {/* Logout */}
-//         <div 
-//           className="
-//             flex items-center px-6 py-4 
-//             border-t border-blue-700 
-//             cursor-pointer hover:bg-blue-700
-//             transition-all duration-300
-//           "
-//         >
-//           <LogOut className="w-6 h-6 mr-4" />
-//           <span className="hidden group-hover:inline">Logout</span>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 // Topbar Component
 const Topbar = () => {
