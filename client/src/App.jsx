@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
@@ -15,7 +14,7 @@ import SearchFilter from './components/SearchFilter';
 import { mockOrders } from './data/mockOrders';
 import { filterOrders } from './utils/filterOrders';
 import Sidebar from './components/Slidebar';
-
+import Dashboard from './components/Dashboard';
 
 // Topbar Component
 const Topbar = () => {
@@ -102,19 +101,14 @@ function App() {
     setFilters(newFilters);
   };
 
-  return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-
-      {/* Main Content Area */}
-      <div className="ml-20 flex-grow">
-        {/* Topbar */}
-        <Topbar />
-
-        {/* Main Content */}
-        <main className="pt-32 px-8 pb-8">
-          <div className="max-w-7xl mx-auto">
+  // Render content based on active menu
+  const renderContent = () => {
+    switch (activeMenu) {
+      case 'dashboard':
+        return <Dashboard />;
+      case 'orders':
+        return (
+          <>
             {/* Page Title */}
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-800 mb-2">
@@ -137,6 +131,58 @@ function App() {
               orders={filteredOrders}
               onFilterChange={() => {/* Optional: additional filter logic */}}
             />
+          </>
+        );
+      case 'customers':
+        return (
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              Customer Management
+            </h1>
+            <p className="text-gray-600">
+              Manage your customers and their information
+            </p>
+          </div>
+        );
+      case 'settings':
+        return (
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              Settings
+            </h1>
+            <p className="text-gray-600">
+              Configure your application settings
+            </p>
+          </div>
+        );
+      default:
+        return (
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              Page Not Found
+            </h1>
+            <p className="text-gray-600">
+              The page you're looking for doesn't exist.
+            </p>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+
+      {/* Main Content Area */}
+      <div className="ml-20 flex-grow">
+        {/* Topbar */}
+        <Topbar />
+
+        {/* Main Content */}
+        <main className="pt-32 px-8 pb-8">
+          <div className="max-w-7xl mx-auto">
+            {renderContent()}
           </div>
         </main>
 
