@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
@@ -11,6 +13,7 @@ import {
 } from 'lucide-react';
 import OrderTable from './components/OrderTable';
 import SearchFilter from './components/SearchFilter';
+import CustomerTable from './components/CustomerTable'; // Import the CustomerTable component
 import { mockOrders } from './data/mockOrders';
 import { filterOrders } from './utils/filterOrders';
 import Sidebar from './components/Slidebar';
@@ -86,6 +89,66 @@ function App() {
     workCenter: ''
   });
 
+  // Mock customer data
+  const mockCustomers = [
+    { 
+      id: 'CUST-001', 
+      name: 'Acme Corp', 
+      email: 'contact@acmecorp.com',
+      creditLimit: 50000, 
+      creditLimitCurrency: 'USD', 
+      currentBalance: 32500 
+    },
+    { 
+      id: 'CUST-002', 
+      name: 'TechGiant', 
+      email: 'info@techgiant.com',
+      creditLimit: 75000, 
+      creditLimitCurrency: 'EUR', 
+      currentBalance: 45600 
+    },
+    { 
+      id: 'CUST-003', 
+      name: 'Global Industries', 
+      email: 'support@globalind.com',
+      creditLimit: 100000, 
+      creditLimitCurrency: 'JPY', 
+      currentBalance: 67800 
+    },
+    { 
+      id: 'CUST-004', 
+      name: 'Innovative Solutions', 
+      email: 'help@innosolutions.com',
+      creditLimit: 65000, 
+      creditLimitCurrency: 'GBP', 
+      currentBalance: 28900 
+    },
+    { 
+      id: 'CUST-005', 
+      name: 'Prime Systems', 
+      email: 'sales@primesystems.com',
+      creditLimit: 45000, 
+      creditLimitCurrency: 'CAD', 
+      currentBalance: 15700 
+    },
+  ];
+
+  // Handler functions for customer actions
+  const handleViewCustomer = (id) => {
+    console.log('View customer', id);
+    // Add your view customer logic here
+  };
+
+  const handleEditCustomer = (id) => {
+    console.log('Edit customer', id);
+    // Add your edit customer logic here
+  };
+
+  const handleDeleteCustomer = (id) => {
+    console.log('Delete customer', id);
+    // Add your delete customer logic here
+  };
+
   // Memoized filtered orders
   const filteredOrders = React.useMemo(() => {
     return filterOrders(mockOrders, searchTerm, filters);
@@ -135,14 +198,67 @@ function App() {
         );
       case 'customers':
         return (
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              Customer Management
-            </h1>
-            <p className="text-gray-600">
-              Manage your customers and their information
-            </p>
-          </div>
+          <>
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                Customer Management
+              </h1>
+              <p className="text-gray-600">
+                View and manage your customer accounts
+              </p>
+            </div>
+            
+            {/* Simple Search for Customers */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <div className="flex items-center">
+                <label className="text-sm font-medium text-gray-700 mr-4">
+                  Customer Name:
+                </label>
+                <div className="relative flex-grow max-w-md">
+                  <input 
+                    type="text" 
+                    placeholder="Search by customer name..."
+                    className="
+                      w-full pl-10 pr-4 py-2 
+                      border border-gray-300 rounded-md 
+                      focus:ring-2 focus:ring-blue-500 
+                      transition-all duration-300
+                    "
+                  />
+                  <Search className="absolute left-3 top-2.5 text-gray-400 h-5 w-5" />
+                </div>
+                <button className="ml-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md transition-colors duration-300">
+                  Search
+                </button>
+              </div>
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <div className="flex flex-wrap gap-3">
+                <button className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-md flex items-center transition-colors duration-300">
+                  <Users className="w-5 h-5 mr-2" />
+                  Create New Customer
+                </button>
+                <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md flex items-center transition-colors duration-300">
+                  <Menu className="w-5 h-5 mr-2" />
+                  Modify Customer
+                </button>
+                <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-6 rounded-md flex items-center transition-colors duration-300">
+                  <Menu className="w-5 h-5 mr-2" />
+                  View Customer
+                </button>
+              </div>
+            </div>
+            
+            {/* Customer Table */}
+            <CustomerTable 
+              customers={mockCustomers}
+              onViewCustomer={handleViewCustomer}
+              onEditCustomer={handleEditCustomer}
+              onDeleteCustomer={handleDeleteCustomer}
+            />
+          </>
         );
       case 'settings':
         return (
